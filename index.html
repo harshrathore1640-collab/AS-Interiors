@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="AS Interiors — premium interior and home design studio.">
+<title>AS Interiors | Interior & Home Designers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+:root{
+  --ink:#171512;--paper:#f5f1e9;--cream:#e9dfcf;--gold:#b89462;
+  --gold2:#d9bd8b;--muted:#70695f;--white:#fffdf9;
+  --line:rgba(23,21,18,.13);--shadow:0 25px 70px rgba(33,25,17,.16);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"DM Sans",sans-serif;background:var(--paper);color:var(--ink);line-height:1.65;overflow-x:hidden}
+a{text-decoration:none;color:inherit} img{display:block;width:100%}
+button{font:inherit}
+.container{width:min(1180px,92%);margin:auto}
+.section{padding:110px 0}
+.section-head{text-align:center;max-width:760px;margin:0 auto 55px}
+.kicker{text-transform:uppercase;letter-spacing:.2em;font-size:.72rem;font-weight:800;color:var(--gold);margin-bottom:13px}
+.section-head h2{font:600 clamp(2.2rem,5vw,4.2rem)/1.05 "Playfair Display",serif;letter-spacing:-.025em}
+.section-head p{color:var(--muted);margin-top:18px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 24px;border-radius:999px;font-weight:700;border:1px solid transparent;transition:.3s;cursor:pointer}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-dark:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(23,21,18,.2)}
+.btn-light{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.45);color:#fff}
+.btn-light:hover{background:#fff;color:var(--ink)}
+.reveal{opacity:0;transform:translateY(32px);transition:.8s ease}
+.reveal.show{opacity:1;transform:none}
+
+/* Loader */
+#loader{position:fixed;inset:0;background:var(--ink);display:grid;place-items:center;z-index:9999;transition:.6s}
+#loader.hide{opacity:0;visibility:hidden}
+.loader-brand{color:#fff;text-align:center}
+.loader-brand strong{font:600 2.2rem "Playfair Display",serif}
+.loader-line{height:1px;width:70px;background:var(--gold);margin:12px auto;animation:load 1.3s infinite}
+@keyframes load{0%{transform:scaleX(.1)}50%{transform:scaleX(1)}100%{transform:scaleX(.1)}}
+
+/* Header */
+header{position:absolute;top:0;left:0;width:100%;z-index:50;padding:22px 0;color:#fff}
+nav{display:flex;align-items:center;justify-content:space-between;gap:25px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-mark{width:44px;height:44px;border:1px solid rgba(255,255,255,.5);display:grid;place-items:center;font:700 1.1rem "Playfair Display",serif}
+.logo strong{font:600 1.35rem "Playfair Display",serif;display:block}
+.logo small{display:block;font-size:.62rem;letter-spacing:.15em;opacity:.75}
+.navlinks{display:flex;gap:27px;font-size:.88rem}
+.navlinks a{transition:.25s}.navlinks a:hover{color:var(--gold2)}
+.nav-cta{padding:11px 18px;border:1px solid rgba(255,255,255,.45);border-radius:999px}
+.menu{display:none;background:none;border:0;color:#fff;font-size:1.4rem}
+
+/* Hero */
+.hero{min-height:100vh;display:grid;align-items:center;position:relative;color:#fff;isolation:isolate;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:-2}
+.hero-bg img{height:100%;object-fit:cover;object-position:center}
+.hero:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(14,12,10,.86),rgba(14,12,10,.48) 52%,rgba(14,12,10,.18))}
+.hero-content{max-width:790px;padding:150px 0 100px}
+.hero .kicker{color:var(--gold2)}
+.hero h1{font:600 clamp(3.3rem,8vw,7rem)/.95 "Playfair Display",serif;letter-spacing:-.045em}
+.hero h1 em{color:var(--gold2);font-style:normal}
+.hero p{max-width:650px;color:#eee7dc;font-size:1.06rem;margin:25px 0 32px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+.hero-meta{display:flex;gap:30px;flex-wrap:wrap;margin-top:42px;color:#ddd3c4;font-size:.86rem}
+.hero-meta i{color:var(--gold2);margin-right:7px}
+
+/* About */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:75px;align-items:center}
+.about-photo{position:relative}
+.about-photo img{height:590px;object-fit:cover}
+.about-photo:after{content:"";position:absolute;inset:18px -18px -18px 18px;border:1px solid var(--gold);z-index:-1}
+.about-copy h3{font:600 clamp(2.2rem,4vw,3.7rem)/1.08 "Playfair Display",serif}
+.about-copy p{color:var(--muted);margin:20px 0}
+.list{list-style:none;display:grid;gap:12px;margin:25px 0}
+.list li{display:flex;gap:12px}.list i{color:var(--gold);margin-top:5px}
+
+/* Services */
+.dark-section{background:var(--ink);color:#fff}
+.dark-section .section-head p{color:#b8b0a5}
+.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.service-card{background:#211e1a;border:1px solid rgba(255,255,255,.1);padding:31px;border-radius:4px;transition:.35s;min-height:270px}
+.service-card:hover{transform:translateY(-7px);border-color:rgba(216,189,139,.5)}
+.service-no{color:var(--gold2);font:600 1.2rem "Playfair Display",serif}
+.service-card h3{font:600 1.55rem "Playfair Display",serif;margin:28px 0 10px}
+.service-card p{color:#aaa198;font-size:.92rem}
+
+/* VSL */
+.vsl-box{max-width:1000px;margin:auto;background:#161411;box-shadow:var(--shadow);overflow:hidden}
+.vsl-box video{display:block;width:100%;aspect-ratio:16/8;object-fit:cover;background:#27231e}
+.vsl-caption{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 24px;color:#d8d0c4}
+.vsl-caption span{font-size:.86rem}
+
+/* Projects */
+.project-grid{display:grid;grid-template-columns:1.15fr .85fr .85fr;grid-auto-rows:250px;gap:14px}
+.project{position:relative;overflow:hidden;background:#ddd;border-radius:3px}
+.project:first-child{grid-row:span 2}
+.project:nth-child(4){grid-column:2/4}
+.project img{height:100%;object-fit:cover;transition:.6s}
+.project:hover img{transform:scale(1.06)}
+.project:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(0,0,0,.7))}
+.project-info{position:absolute;z-index:2;left:20px;right:20px;bottom:18px;color:#fff}
+.project-info small{color:var(--gold2);text-transform:uppercase;letter-spacing:.15em;font-size:.65rem}
+.project-info h3{font:600 1.45rem "Playfair Display",serif}
+
+/* Reviews */
+.reviews{background:var(--cream)}
+.review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.review{background:rgba(255,255,255,.62);padding:31px;border:1px solid rgba(23,21,18,.1)}
+.stars{color:var(--gold);letter-spacing:3px;margin-bottom:18px}
+.review p{color:#554e46;margin-bottom:22px}.review strong{font-family:"Playfair Display",serif;font-size:1.1rem}
+
+/* FAQ */
+.faq{max-width:860px;margin:auto;display:grid;gap:10px}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{width:100%;background:none;border:0;padding:23px 4px;display:flex;justify-content:space-between;align-items:center;text-align:left;font-weight:700;cursor:pointer;color:var(--ink)}
+.faq-q i{transition:.3s;color:var(--gold)}
+.faq-a{max-height:0;overflow:hidden;color:var(--muted);transition:.35s}
+.faq-item.active .faq-a{max-height:180px;padding:0 35px 22px 4px}.faq-item.active .faq-q i{transform:rotate(45deg)}
+
+/* Contact */
+.contact-section{background:#171512;color:#fff}
+.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:30px}
+.contact-copy h2{font:600 clamp(2.5rem,5vw,4.5rem) "Playfair Display",serif;line-height:1.02}
+.contact-copy p{color:#b8b0a5;margin:20px 0 30px}
+.contact-item{display:flex;gap:14px;margin:18px 0;color:#ddd3c6}
+.contact-item i{color:var(--gold2);width:20px;margin-top:4px}
+.contact-card{background:#211e1a;padding:35px;border:1px solid rgba(255,255,255,.1)}
+.contact-card h3{font:600 2rem "Playfair Display",serif;margin-bottom:20px}
+.contact-form{display:grid;gap:13px}
+.contact-form input,.contact-form textarea{width:100%;padding:15px 16px;background:#171512;border:1px solid rgba(255,255,255,.14);color:#fff;outline:none;font:inherit}
+.contact-form textarea{min-height:120px;resize:vertical}
+.contact-form input:focus,.contact-form textarea:focus{border-color:var(--gold)}
+
+/* Footer */
+footer{background:#0e0d0b;color:#fff;padding:34px 0 24px}
+.footer-top{display:flex;justify-content:space-between;align-items:center;gap:20px}
+.socials{display:flex;gap:8px}.socials a{width:40px;height:40px;border:1px solid rgba(255,255,255,.14);display:grid;place-items:center;border-radius:50%;transition:.25s}
+.socials a:hover{background:var(--gold);color:#111}
+.copyright{text-align:center;color:#827b72;font-size:.75rem;margin-top:25px}
+.copyright a{color:var(--gold2)}
+
+/* Floating */
+.floaters{position:fixed;right:18px;bottom:18px;z-index:100;display:grid;gap:9px}
+.floaters a{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;color:#fff;box-shadow:0 12px 25px rgba(0,0,0,.22);transition:.25s}
+.floaters a:hover{transform:translateY(-4px) scale(1.04)}
+.call{background:#2d6580}.wa{background:#159d61}
+
+@media(max-width:900px){
+ .navlinks,.nav-cta{display:none}.menu{display:block}
+ .about-grid,.contact-grid{grid-template-columns:1fr}
+ .service-grid,.review-grid{grid-template-columns:repeat(2,1fr)}
+ .project-grid{grid-template-columns:1fr 1fr;grid-auto-rows:260px}
+ .project:first-child{grid-row:span 1}.project:nth-child(4){grid-column:auto}
+}
+@media(max-width:600px){
+ .section{padding:78px 0}.hero-content{padding:125px 0 75px}
+ .hero h1{font-size:clamp(3rem,15vw,5rem)}
+ .hero-actions .btn{width:100%}.hero-meta{flex-direction:column;gap:10px}
+ .about-photo img{height:420px}.about-photo:after{inset:10px -10px -10px 10px}
+ .service-grid,.review-grid,.project-grid{grid-template-columns:1fr}
+ .project,.project:first-child{height:310px}
+ .vsl-caption{flex-direction:column;align-items:flex-start}
+ .contact-card{padding:24px}.footer-top{align-items:flex-start;flex-direction:column}
+}
+</style>
+</head>
+
+<body>
+<div id="loader"><div class="loader-brand"><strong>AS Interiors</strong><div class="loader-line"></div><small>INTERIOR & HOME DESIGN</small></div></div>
+
+<header>
+ <div class="container">
+  <nav>
+   <a href="#home" class="logo">
+    <span class="logo-mark">AS</span>
+    <span><strong>AS Interiors</strong><small>INTERIOR & HOME DESIGN</small></span>
+   </a>
+   <div class="navlinks">
+    <a href="#about">About</a><a href="#services">Services</a><a href="#projects">Projects</a>
+    <a href="#reviews">Reviews</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
+   </div>
+   <a class="nav-cta" href="tel:+919999372786">Let's Talk</a>
+   <button class="menu" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+  </nav>
+ </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+ <div class="hero-bg">
+  <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2200&q=90" alt="Luxury contemporary interior designed by AS Interiors">
+ </div>
+ <div class="container">
+  <div class="hero-content reveal">
+   <div class="kicker">Interior Architecture • Home Design</div>
+   <h1>Spaces made to feel <em>like you.</em></h1>
+   <p>AS Interiors creates refined residential interiors where architecture, materials, light and everyday living come together in a timeless design language.</p>
+   <div class="hero-actions">
+    <a class="btn btn-dark magnetic" href="tel:+919999372786"><i class="fa-solid fa-phone"></i> Call 9999372786</a>
+    <a class="btn btn-light magnetic" target="_blank" rel="noopener" href="https://wa.me/919999372786?text=Hello%20AS%20Interiors%2C%20I%27d%20like%20to%20discuss%20an%20interior%20design%20project."><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+   </div>
+   <div class="hero-meta">
+    <span><i class="fa-solid fa-house"></i> Residential Interiors</span>
+    <span><i class="fa-solid fa-compass-drafting"></i> Bespoke Design</span>
+    <span><i class="fa-solid fa-lightbulb"></i> Detail-led Concepts</span>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="about">
+ <div class="container">
+  <div class="about-grid">
+   <div class="about-photo reveal">
+    <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1300&q=90" alt="Elegant modern living room interior">
+   </div>
+   <div class="about-copy reveal">
+    <div class="kicker">About AS Interiors</div>
+    <h3>Thoughtful interiors, shaped around the way you live.</h3>
+    <p>AS Interiors is positioned as a premium interior and home-design studio focused on creating sophisticated, comfortable and highly personal spaces.</p>
+    <p>From the first concept to the final details, every element is considered as part of one cohesive visual story.</p>
+    <ul class="list">
+     <li><i class="fa-solid fa-check"></i><span>Concept-led residential interior design</span></li>
+     <li><i class="fa-solid fa-check"></i><span>Material, colour and lighting direction</span></li>
+     <li><i class="fa-solid fa-check"></i><span>Space planning and furniture styling</span></li>
+     <li><i class="fa-solid fa-check"></i><span>Design focused on comfort and functionality</span></li>
+    </ul>
+    <a class="btn btn-dark magnetic" href="#contact">Start Your Project <i class="fa-solid fa-arrow-right"></i></a>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="section dark-section" id="services">
+ <div class="container">
+  <div class="section-head reveal">
+   <div class="kicker">Our Services</div>
+   <h2>Designing every layer of your space.</h2>
+   <p>From the overall concept to the final styling details, the design process is built around one cohesive vision.</p>
+  </div>
+  <div class="service-grid">
+   <article class="service-card reveal"><span class="service-no">01</span><h3>Residential Interiors</h3><p>Complete interior concepts for apartments, villas and contemporary homes.</p></article>
+   <article class="service-card reveal"><span class="service-no">02</span><h3>Space Planning</h3><p>Layouts that balance circulation, proportions, storage, furniture and everyday functionality.</p></article>
+   <article class="service-card reveal"><span class="service-no">03</span><h3>Kitchen & Dining</h3><p>Modern kitchen and dining concepts with considered finishes, lighting and practical details.</p></article>
+   <article class="service-card reveal"><span class="service-no">04</span><h3>Living Spaces</h3><p>Layered living rooms designed around comfort, character, furniture and visual balance.</p></article>
+   <article class="service-card reveal"><span class="service-no">05</span><h3>Bedroom Design</h3><p>Calm, personal bedroom environments using proportion, texture, colour and warm lighting.</p></article>
+   <article class="service-card reveal"><span class="service-no">06</span><h3>Styling & Finishing</h3><p>Final selections of furniture, decor, textures and accessories that complete the design.</p></article>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="video">
+ <div class="container">
+  <div class="section-head reveal">
+   <div class="kicker">Design Story</div>
+   <h2>See how a space becomes a home.</h2>
+   <p>Add your own project walkthrough, studio introduction or interior-design reel here.</p>
+  </div>
+  <div class="vsl-box reveal">
+   <!-- Replace AS-interiors-video.mp4 with your own video file -->
+   <video controls muted playsinline poster="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1800&q=85">
+    <source src="AS-interiors-video.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+   </video>
+   <div class="vsl-caption">
+    <span><i class="fa-solid fa-play"></i> AS Interiors — Project Walkthrough</span>
+    <a class="btn btn-light" style="background:var(--gold);border:0;color:#171512" href="tel:+919999372786">Discuss Your Space</a>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="projects">
+ <div class="container">
+  <div class="section-head reveal">
+   <div class="kicker">Selected Spaces</div>
+   <h2>Interiors with character, warmth and purpose.</h2>
+   <p>Replace these visuals with AS Interiors' actual completed projects whenever available.</p>
+  </div>
+  <div class="project-grid">
+   <figure class="project reveal"><img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1400&q=90" alt="Luxury living room"><figcaption class="project-info"><small>Residential</small><h3>Contemporary Residence</h3></figcaption></figure>
+   <figure class="project reveal"><img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=90" alt="Modern neutral interior"><figcaption class="project-info"><small>Living</small><h3>Warm Minimalism</h3></figcaption></figure>
+   <figure class="project reveal"><img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=90" alt="Luxury bedroom interior"><figcaption class="project-info"><small>Bedroom</small><h3>Quiet Luxury</h3></figcaption></figure>
+   <figure class="project reveal"><img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1400&q=90" alt="Designer kitchen and dining area"><figcaption class="project-info"><small>Kitchen</small><h3>Modern Crafted Living</h3></figcaption></figure>
+   <figure class="project reveal"><img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=90" alt="Elegant home interior"><figcaption class="project-info"><small>Interiors</small><h3>Natural Textures</h3></figcaption></figure>
+  </div>
+ </div>
+</section>
+
+<section class="section reviews" id="reviews">
+ <div class="container">
+  <div class="section-head reveal">
+   <div class="kicker">Client Experience</div>
+   <h2>Designed around people, not just rooms.</h2>
+   <p>Sample review layout — replace the text with verified client reviews before publishing.</p>
+  </div>
+  <div class="review-grid">
+   <article class="review reveal"><div class="stars">★★★★★</div><p>“The design feels elegant without losing the warmth and comfort we wanted for our home.”</p><strong>Verified Client</strong></article>
+   <article class="review reveal"><div class="stars">★★★★★</div><p>“Every material and detail felt thoughtfully selected. The overall space is cohesive and practical.”</p><strong>Verified Client</strong></article>
+   <article class="review reveal"><div class="stars">★★★★★</div><p>“The team understood the mood we wanted and translated it into a beautiful interior.”</p><strong>Verified Client</strong></article>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="faq">
+ <div class="container">
+  <div class="section-head reveal">
+   <div class="kicker">FAQ</div>
+   <h2>Questions before starting your project.</h2>
+  </div>
+  <div class="faq">
+   <div class="faq-item"><button class="faq-q">What type of projects does AS Interiors handle?<i class="fa-solid fa-plus"></i></button><div class="faq-a">AS Interiors is presented here as a residential interior and home-design studio. Confirm the exact project scope and service area directly with the studio.</div></div>
+   <div class="faq-item"><button class="faq-q">Can I discuss my project before booking?<i class="fa-solid fa-plus"></i></button><div class="faq-a">Yes. Use the Call or WhatsApp buttons to share your requirements, property type, approximate size and design expectations.</div></div>
+   <div class="faq-item"><button class="faq-q">Do you help with materials and finishes?<i class="fa-solid fa-plus"></i></button><div class="faq-a">Material, colour, lighting and finish direction can be part of an interior-design process. Confirm the exact inclusions with AS Interiors.</div></div>
+   <div class="faq-item"><button class="faq-q">How do I get a quotation?<i class="fa-solid fa-plus"></i></button><div class="faq-a">Call 9999372786 or WhatsApp the studio with your project details to discuss the next step and quotation process.</div></div>
+  </div>
+ </div>
+</section>
+
+<section class="section contact-section" id="contact">
+ <div class="container">
+  <div class="contact-grid">
+   <div class="contact-copy reveal">
+    <div class="kicker">Start a Conversation</div>
+    <h2>Let's design a space you'll love coming home to.</h2>
+    <p>Tell AS Interiors about your home, your style and what you want the space to feel like.</p>
+    <div class="contact-item"><i class="fa-solid fa-phone"></i><span><strong>Call</strong><br>9999372786</span></div>
+    <div class="contact-item"><i class="fa-brands fa-whatsapp"></i><span><strong>WhatsApp</strong><br>Available for project enquiries</span></div>
+    <div class="contact-item"><i class="fa-solid fa-location-dot"></i><span><strong>Location</strong><br>Service area — confirm with AS Interiors</span></div>
+   </div>
+   <div class="contact-card reveal">
+    <h3>Project Enquiry</h3>
+    <form class="contact-form" id="enquiryForm">
+     <input id="name" type="text" placeholder="Your name" required>
+     <input id="project" type="text" placeholder="Project type / location" required>
+     <input id="budget" type="text" placeholder="Approx. budget (optional)">
+     <textarea id="message" placeholder="Tell us about your space..." required></textarea>
+     <button class="btn btn-dark magnetic" type="submit"><i class="fa-brands fa-whatsapp"></i> Send Enquiry on WhatsApp</button>
+    </form>
+   </div>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="container">
+  <div class="footer-top">
+   <a href="#home" class="logo">
+    <span class="logo-mark">AS</span>
+    <span><strong>AS Interiors</strong><small>INTERIOR & HOME DESIGN</small></span>
+   </a>
+   <div class="socials">
+    <!-- Replace INSTAGRAM_HANDLE with the exact Instagram ID from the brand reference -->
+    <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://wa.me/919999372786" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="tel:+919999372786" aria-label="Call"><i class="fa-solid fa-phone"></i></a>
+   </div>
+  </div>
+  <div class="copyright">© <span id="year"></span> AS Interiors. All rights reserved. · Designed by <a href="#">Marwar Infotech</a></div>
+ </div>
+</footer>
+
+<div class="floaters">
+ <a class="call" href="tel:+919999372786" aria-label="Call AS Interiors"><i class="fa-solid fa-phone"></i></a>
+ <a class="wa" href="https://wa.me/919999372786?text=Hello%20AS%20Interiors%2C%20I%27d%20like%20to%20discuss%20an%20interior%20design%20project." target="_blank" rel="noopener" aria-label="WhatsApp AS Interiors"><i class="fa-brands fa-whatsapp"></i></a>
+</div>
+
+<script>
+window.addEventListener("load",()=>setTimeout(()=>document.getElementById("loader").classList.add("hide"),700));
+
+const observer=new IntersectionObserver(entries=>{
+ entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("show")});
+},{threshold:.12});
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+
+document.querySelectorAll(".faq-q").forEach(btn=>{
+ btn.addEventListener("click",()=>{
+  const item=btn.parentElement;
+  document.querySelectorAll(".faq-item").forEach(x=>{if(x!==item)x.classList.remove("active")});
+  item.classList.toggle("active");
+ });
+});
+
+document.querySelectorAll(".magnetic").forEach(btn=>{
+ btn.addEventListener("mousemove",e=>{
+  const r=btn.getBoundingClientRect(),x=e.clientX-r.left-r.width/2,y=e.clientY-r.top-r.height/2;
+  btn.style.transform=`translate(${x*.10}px,${y*.10}px)`;
+ });
+ btn.addEventListener("mouseleave",()=>btn.style.transform="");
+});
+
+document.getElementById("enquiryForm").addEventListener("submit",e=>{
+ e.preventDefault();
+ const name=document.getElementById("name").value.trim();
+ const project=document.getElementById("project").value.trim();
+ const budget=document.getElementById("budget").value.trim();
+ const message=document.getElementById("message").value.trim();
+ const text=`Hello AS Interiors,%0A%0AName: ${encodeURIComponent(name)}%0AProject/Location: ${encodeURIComponent(project)}%0ABudget: ${encodeURIComponent(budget||"Not specified")}%0ARequirement: ${encodeURIComponent(message)}`;
+ window.open(`https://wa.me/919999372786?text=${text}`,"_blank");
+});
+
+document.getElementById("year").textContent=new Date().getFullYear();
+
+document.querySelector(".menu").addEventListener("click",()=>{
+ const nav=document.querySelector(".navlinks");
+ const open=nav.style.display==="flex";
+ nav.style.display=open?"none":"flex";
+ if(!open){
+  nav.style.position="absolute";nav.style.top="75px";nav.style.left="4%";nav.style.right="4%";
+  nav.style.padding="20px";nav.style.flexDirection="column";nav.style.background="#171512";
+ }
+});
+</script>
+</body>
+</html>
